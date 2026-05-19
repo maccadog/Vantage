@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vantage Detailing — Professional Fleet Care Auckland</title>
+  <meta name="description" content="Vantage Detailing provides premium fleet detailing services for Auckland businesses. Mobile on-site servicing, corporate fleet plans, and executive presentation care." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0A0A0B;
+      --charcoal: #111113;
+      --charcoal-mid: #1A1A1D;
+      --charcoal-light: #222226;
+      --silver: #C0C0C0;
+      --silver-dim: #888890;
+      --silver-bright: #E0E0E0;
+      --white: #FFFFFF;
+      --navy: #0D1B2A;
+      --blue-accent: #1A3A5C;
+      --blue-glow: #2557A7;
+      --border: rgba(192,192,192,0.12);
+      --border-bright: rgba(192,192,192,0.25);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 5vw; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(10,10,11,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500;
+      letter-spacing: 0.05em; color: var(--white); text-decoration: none;
+    }
+    .nav-logo span { color: var(--silver); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--silver-dim); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      color: var(--black) !important; background: var(--silver-bright);
+      padding: 0.6rem 1.5rem; border-radius: 2px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
+    }
+    .nav-cta:hover {
+      background: var(--white) !important; transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(192,192,192,0.2) !important;
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--silver); transition: all 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; inset: 72px 0 0 0;
+      background: var(--charcoal); z-index: 99;
+      flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem;
+      font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--silver); text-decoration: none;
+    }
+    .mobile-menu a.cta-mobile {
+      background: var(--silver-bright); color: var(--black);
+      padding: 0.75rem 2.5rem; border-radius: 2px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding: 72px 5vw 0;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(37,87,167,0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(184,164,122,0.04) 0%, transparent 60%),
+        linear-gradient(160deg, #0A0A0B 0%, #111113 40%, #0D1B2A 100%);
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(192,192,192,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(192,192,192,0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      animation: gridDrift 50s linear infinite;
+    }
+    .hero-content {
+      position: relative; z-index: 2; max-width: 900px;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+      animation: fadeUp 1s 0.1s ease both;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--silver-dim); }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 7vw, 6.5rem); font-weight: 300;
+      line-height: 1.02; color: var(--white); margin-bottom: 2rem;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+    .hero-title em { font-style: italic; color: var(--silver); }
+    .hero-sub {
+      font-size: 1.05rem; font-weight: 300; color: var(--silver-dim);
+      max-width: 560px; line-height: 1.75; margin-bottom: 3rem;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+      animation: fadeUp 1s 0.4s ease both;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      opacity: 0.4; animation: pulse 2.5s infinite;
+    }
+    .hero-scroll span { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--silver), transparent); }
+    .hero-badge {
+      position: absolute; right: 8vw; bottom: 15vh;
+      width: 130px; height: 130px; border-radius: 50%;
+      border: 1px solid var(--border-bright);
+      animation: spin 22s linear infinite; opacity: 0.45;
+    }
+    .hero-badge-text {
+      position: absolute; right: 8vw; bottom: 15vh;
+      width: 130px; height: 130px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-badge-inner { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--silver-dim); }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem;
+      font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      background: var(--white); color: var(--black);
+      padding: 1rem 2.5rem; border: none; border-radius: 2px;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: background 0.2s, transform 0.25s, box-shadow 0.25s;
+    }
+    .btn-primary:hover {
+      background: var(--silver-bright); transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(192,192,192,0.2);
+    }
+    .btn-outline {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem;
+      font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      background: transparent; color: var(--silver);
+      padding: 1rem 2.5rem; border: 1px solid var(--border-bright); border-radius: 2px;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: border-color 0.2s, color 0.2s, transform 0.25s, box-shadow 0.25s;
+    }
+    .btn-outline:hover {
+      border-color: var(--silver); color: var(--white);
+      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,192,192,0.08);
+    }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      overflow: hidden; background: var(--charcoal-mid);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0;
+    }
+    .ticker { display: flex; gap: 4rem; width: max-content; animation: ticker 32s linear infinite; }
+    .ticker-item {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem;
+      font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--silver-dim); white-space: nowrap;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--silver-dim); }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 5vw; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem;
+      font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--silver-dim); display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--border-bright); }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300;
+      line-height: 1.1; color: var(--white); margin-bottom: 1.5rem;
+    }
+    .section-sub { font-size: 0.97rem; color: var(--silver-dim); max-width: 540px; line-height: 1.8; }
+
+    /* ── IMAGE / VIDEO PLACEHOLDERS ── */
+    .img-placeholder {
+      position: relative; overflow: hidden; border-radius: 3px;
+      background: var(--charcoal-light);
+      border: 1px dashed rgba(192,192,192,0.18);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.6rem;
+      text-align: center; padding: 1.5rem;
+    }
+    .img-placeholder::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        45deg, transparent, transparent 18px,
+        rgba(192,192,192,0.015) 18px, rgba(192,192,192,0.015) 36px
+      );
+    }
+    .img-placeholder::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg,
+        transparent 0%, rgba(192,192,192,0.035) 50%, transparent 100%);
+      background-size: 600px 100%;
+      animation: shimmer 5s ease infinite;
+    }
+    .iph-icon { font-size: 1.8rem; opacity: 0.28; position: relative; z-index: 1; }
+    .iph-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem;
+      font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--silver-dim); opacity: 0.45; position: relative; z-index: 1;
+    }
+    .iph-sub { font-size: 0.7rem; color: var(--silver-dim); opacity: 0.3; position: relative; z-index: 1; }
+    .iph-wm {
+      position: absolute; bottom: 0.75rem; right: 0.85rem;
+      font-family: 'Cormorant Garamond', serif; font-size: 0.6rem;
+      font-style: italic; color: var(--silver-dim); opacity: 0.18; letter-spacing: 0.08em;
+    }
+
+    /* ── SHOWCASE ── */
+    #showcase { background: var(--black); padding: 0 5vw 5rem; }
+    .showcase-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr; gap: 2px;
+    }
+    .showcase-right { display: grid; grid-template-rows: repeat(2, 1fr); gap: 2px; }
+
+    /* ── INDUSTRIES ── */
+    #industries { background: var(--charcoal); }
+    .industries-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px; border: 1px solid var(--border); margin-top: 4rem;
+    }
+    .industry-card {
+      background: var(--charcoal-mid); padding: 2.5rem 2rem;
+      transition: background 0.3s; position: relative; overflow: hidden;
+    }
+    .industry-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: linear-gradient(to right, var(--blue-glow), var(--silver));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+    }
+    .industry-card:hover { background: var(--charcoal-light); }
+    .industry-card:hover::before { transform: scaleX(1); }
+    .industry-icon { font-size: 1.8rem; margin-bottom: 1.2rem; }
+    .industry-card h3 {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1rem;
+      font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.6rem;
+    }
+    .industry-card p { font-size: 0.87rem; color: var(--silver-dim); line-height: 1.65; }
+
+    /* ── PROCESS ── */
+    #process { background: var(--black); }
+    .process-header {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 5rem;
+    }
+    .water-notice {
+      background: rgba(37,87,167,0.08);
+      border: 1px solid rgba(37,87,167,0.3);
+      border-radius: 3px; padding: 1.25rem 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start; margin-top: 1.75rem;
+    }
+    .water-notice-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .water-notice p { font-size: 0.85rem; color: var(--silver-dim); line-height: 1.65; }
+    .water-notice strong { color: var(--silver-bright); font-weight: 500; }
+    .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .process-step {
+      border: 1px solid var(--border); padding: 3rem 2.5rem;
+      position: relative; overflow: hidden;
+      background: var(--charcoal-mid);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.35s;
+    }
+    .process-step:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-5px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    }
+    .process-step-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 5rem;
+      font-weight: 300; color: rgba(192,192,192,0.055);
+      line-height: 1; position: absolute; top: 1.5rem; right: 2rem;
+    }
+    .process-step-icon { font-size: 2rem; margin-bottom: 1.5rem; }
+    .process-step h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.6rem;
+      font-weight: 400; color: var(--white); margin-bottom: 1rem;
+    }
+    .process-step p { font-size: 0.9rem; color: var(--silver-dim); line-height: 1.75; }
+    .process-step-detail {
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .process-step-detail span {
+      font-size: 0.82rem; color: var(--silver-dim);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .process-step-detail span::before { content: '—'; color: var(--border-bright); }
+    .process-media {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 2px;
+    }
+
+    /* ── BEFORE & AFTER ── */
+    #beforeafter { background: var(--charcoal); }
+    .ba-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+    .ba-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .ba-card-images { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .ba-label-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 2px; }
+    .ba-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem;
+      font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      text-align: center; padding: 0.4rem;
+      background: var(--charcoal-light); color: var(--silver-dim);
+    }
+    .ba-label.after { color: var(--white); background: var(--blue-accent); }
+    .ba-card-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem;
+      font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--silver-dim); margin-top: 0.75rem; text-align: center;
+    }
+
+    /* ── HOW IT WORKS ── */
+    #howitworks { background: var(--black); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 4rem; }
+    .step {
+      padding: 2.5rem; text-align: center; border: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .step:hover { background: var(--charcoal-mid); }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 3.5rem;
+      font-weight: 300; color: var(--border-bright); line-height: 1; margin-bottom: 1.5rem;
+    }
+    .step h3 {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem;
+      font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.75rem;
+    }
+    .step p { font-size: 0.88rem; color: var(--silver-dim); line-height: 1.7; }
+
+    /* ── FLEET PLANS ── */
+    #plans { background: var(--charcoal); }
+    .plans-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px; border: 1px solid var(--border); margin-top: 4rem;
+    }
+    .plan-card {
+      background: var(--charcoal-mid); padding: 2rem 1.75rem;
+      transition: background 0.3s;
+    }
+    .plan-card:hover { background: var(--charcoal-light); }
+    .plan-freq {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue-glow); margin-bottom: 0.75rem;
+    }
+    .plan-card h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+      font-weight: 400; color: var(--white); margin-bottom: 0.6rem;
+    }
+    .plan-card p { font-size: 0.85rem; color: var(--silver-dim); line-height: 1.65; }
+
+    /* ── PRIVATE ── */
+    #private {
+      background: linear-gradient(160deg, var(--navy) 0%, #080d14 50%, var(--charcoal) 100%);
+      position: relative; overflow: hidden;
+    }
+    #private::before {
+      content: ''; position: absolute; top: -100px; right: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,87,167,0.08) 0%, transparent 70%);
+    }
+    .private-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .private-features { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .private-feat { display: flex; gap: 1rem; align-items: flex-start; }
+    .feat-icon {
+      width: 32px; height: 32px; background: var(--blue-accent); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0;
+    }
+    .private-feat h4 { font-size: 0.9rem; font-weight: 500; color: var(--white); margin-bottom: 0.2rem; }
+    .private-feat p { font-size: 0.82rem; color: var(--silver-dim); }
+    .private-cta-box {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border-bright);
+      border-radius: 4px; padding: 3rem;
+    }
+    .private-cta-box h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 2rem;
+      font-weight: 300; color: var(--white); margin-bottom: 1rem;
+    }
+    .private-cta-box p { font-size: 0.9rem; color: var(--silver-dim); margin-bottom: 2rem; line-height: 1.75; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--charcoal); }
+    .about-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; margin-bottom: 6rem; }
+    .about-story p { font-size: 0.95rem; color: var(--silver-dim); line-height: 1.85; margin-bottom: 1.25rem; }
+    .about-story p strong { color: var(--silver-bright); font-weight: 500; }
+    .about-pull {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 300;
+      color: var(--silver); font-style: italic;
+      border-left: 2px solid var(--border-bright); padding-left: 1.75rem;
+      margin: 2rem 0; line-height: 1.5;
+    }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .stat-box { border: 1px solid var(--border); padding: 1.75rem 1.5rem; border-radius: 2px; }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif; font-size: 2.8rem;
+      font-weight: 300; color: var(--white); line-height: 1; margin-bottom: 0.5rem;
+    }
+    .stat-desc { font-size: 0.82rem; color: var(--silver-dim); }
+    .about-values { display: flex; flex-direction: column; gap: 0.75rem; }
+    .value-line { display: flex; align-items: center; gap: 1rem; font-size: 0.88rem; color: var(--silver-dim); }
+    .value-line::before { content: ''; width: 20px; height: 1px; background: var(--silver-dim); flex-shrink: 0; }
+
+    /* ── FOUNDERS ── */
+    .founders-divider {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem;
+      font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--silver-dim); display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem;
+    }
+    .founders-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .founder-card {
+      background: var(--charcoal-mid); border: 1px solid var(--border);
+      overflow: hidden; transition: border-color 0.3s;
+    }
+    .founder-card:hover { border-color: var(--border-bright); }
+    .founder-photo .img-placeholder { height: 300px; border-radius: 0; border: none; border-bottom: 1px dashed rgba(192,192,192,0.15); }
+    .founder-body { padding: 2.5rem; }
+    .founder-name {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.7rem;
+      font-weight: 400; color: var(--white); margin-bottom: 0.3rem;
+    }
+    .founder-role {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem;
+      font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue-glow); margin-bottom: 1.75rem;
+    }
+    .founder-body p { font-size: 0.9rem; color: var(--silver-dim); line-height: 1.82; margin-bottom: 1rem; }
+    .founder-body p:last-child { margin-bottom: 0; }
+
+    /* ── FAQ ── */
+    #faq { background: var(--black); }
+    .faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start; }
+    .faq-item { border-bottom: 1px solid var(--border); overflow: hidden; }
+    .faq-q {
+      width: 100%; background: none; border: none; color: var(--white);
+      font-family: 'Barlow', sans-serif; font-size: 0.97rem; font-weight: 400;
+      text-align: left; padding: 1.5rem 0; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--silver-bright); }
+    .faq-icon { font-size: 1.2rem; color: var(--silver-dim); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 0.9rem; color: var(--silver-dim); line-height: 1.8;
+      max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-a { max-height: 250px; padding-bottom: 1.5rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--charcoal-mid); border-top: 1px solid var(--border); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem;
+      font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--silver-dim);
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      background: var(--charcoal-light); border: 1px solid var(--border); border-radius: 2px;
+      color: var(--white); font-family: 'Barlow', sans-serif; font-size: 0.9rem;
+      padding: 0.85rem 1rem; transition: border-color 0.2s; outline: none; width: 100%;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--silver-dim); }
+    .form-group select { appearance: none; cursor: pointer; }
+    .form-group select option { background: var(--charcoal-light); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-note { font-size: 0.8rem; color: var(--silver-dim); line-height: 1.6; }
+    .contact-info h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 2rem;
+      font-weight: 300; color: var(--white); margin-bottom: 1rem;
+    }
+    .contact-info p { font-size: 0.92rem; color: var(--silver-dim); line-height: 1.8; margin-bottom: 2rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.25rem; border: 1px solid var(--border); border-radius: 2px;
+    }
+    .contact-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .contact-item h4 {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--silver-dim); margin-bottom: 0.3rem;
+    }
+    .contact-item p { font-size: 0.9rem; color: var(--white); margin-bottom: 0; }
+    .form-success {
+      display: none; background: rgba(37,87,167,0.1); border: 1px solid rgba(37,87,167,0.3);
+      border-radius: 4px; padding: 1.5rem; font-size: 0.9rem;
+      color: var(--silver-bright); text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); border-top: 1px solid var(--border); padding: 3rem 5vw; }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; color: var(--white); }
+    .footer-logo span { color: var(--silver-dim); }
+    .footer-slogan { font-size: 0.8rem; color: var(--silver-dim); margin-top: 0.3rem; font-style: italic; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem;
+      font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--silver-dim); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: 0.75rem; color: #444; }
+
+    /* ── KEYFRAMES ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 0.7; } }
+    @keyframes gridDrift {
+      from { background-position: 0 0; }
+      to { background-position: 80px 80px; }
+    }
+    @keyframes shimmer {
+      0% { background-position: -600px 0; }
+      100% { background-position: 600px 0; }
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .rd1 { transition-delay: 0.1s; }
+    .rd2 { transition-delay: 0.2s; }
+    .rd3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .process-header { grid-template-columns: 1fr; gap: 2rem; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-media { grid-template-columns: 1fr; }
+      .about-intro { grid-template-columns: 1fr; gap: 3rem; }
+      .founders-grid { grid-template-columns: 1fr; }
+      .faq-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .private-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .ba-intro { grid-template-columns: 1fr; gap: 2rem; }
+      .ba-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 4.5rem 5vw; }
+      .hero-badge, .hero-badge-text { display: none; }
+      .steps { grid-template-columns: 1fr; }
+      .ba-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-inner { flex-direction: column; text-align: center; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">VANTAGE<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#process">Our Service</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#process" onclick="closeMobile()">Our Service</a>
+  <a href="#industries" onclick="closeMobile()">Industries</a>
+  <a href="#plans" onclick="closeMobile()">Fleet Plans</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#contact" class="cta-mobile" onclick="closeMobile()">Get a Quote</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="label">Auckland Fleet Detailing</span></div>
+    <h1 class="hero-title">Professional Fleets.<br><em>Elevated Presence.</em></h1>
+    <p class="hero-sub">Vantage Detailing helps Auckland businesses maintain immaculate fleets that represent professionalism, trust, and quality — on-site, on schedule, every time.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get a Fleet Quote</a>
+      <a href="#process" class="btn-outline">Our Process</a>
+    </div>
+  </div>
+  <div class="hero-badge" aria-hidden="true">
+    <svg viewBox="0 0 130 130" width="130" height="130">
+      <path id="circlePath" d="M 65 65 m -45 0 a 45 45 0 1 1 90 0 a 45 45 0 1 1 -90 0" fill="none"/>
+      <text fill="#C0C0C0" font-size="10" font-family="Barlow Condensed" letter-spacing="5" font-weight="600">
+        <textPath href="#circlePath">AUCKLAND · MOBILE SERVICE · PREMIUM FLEET CARE · </textPath>
+      </text>
+    </svg>
+  </div>
+  <div class="hero-badge-text" aria-hidden="true">
+    <div class="hero-badge-inner">✦</div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <div class="ticker-item">Mobile On-Site Service <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Full Interior Cleans <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Exterior Wash &amp; Wax <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Tyre Dressing <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Auckland Fleet Specialists <span class="ticker-dot"></span></div>
+    <div class="ticker-item">After-Hours Availability <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Because It's More Than Just a Car <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Mobile On-Site Service <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Full Interior Cleans <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Exterior Wash &amp; Wax <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Tyre Dressing <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Auckland Fleet Specialists <span class="ticker-dot"></span></div>
+    <div class="ticker-item">After-Hours Availability <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Because It's More Than Just a Car <span class="ticker-dot"></span></div>
+  </div>
+</div>
+
+<!-- VISUAL SHOWCASE -->
+<div id="showcase">
+  <div class="showcase-grid reveal">
+    <div class="img-placeholder" style="height:460px;">
+      <div class="iph-icon">🎬</div>
+      <div class="iph-label">Hero Video / Feature Image</div>
+      <div class="iph-sub">Fleet lineup or detail shot — landscape orientation</div>
+      <div class="iph-wm">vantagedetailing.co.nz</div>
+    </div>
+    <div class="showcase-right">
+      <div class="img-placeholder">
+        <div class="iph-icon">📸</div>
+        <div class="iph-label">Interior Detail Shot</div>
+        <div class="iph-wm">vantagedetailing.co.nz</div>
+      </div>
+      <div class="img-placeholder">
+        <div class="iph-icon">📸</div>
+        <div class="iph-label">Exterior Finish Close-Up</div>
+        <div class="iph-wm">vantagedetailing.co.nz</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OUR PROCESS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="process-header reveal">
+      <div>
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Our Detailing<br>Process</h2>
+        <p class="section-sub">Every vehicle in your fleet receives the same meticulous three-stage treatment — designed to restore, protect, and present.</p>
+      </div>
+      <div>
+        <div class="water-notice">
+          <div class="water-notice-icon">💧</div>
+          <p><strong>Please note:</strong> Our mobile service requires access to a <strong>water source and power supply</strong> at your premises. Most business sites accommodate this easily — if you're unsure, just let us know when you enquire and we'll confirm everything ahead of your first service.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="process-step-num">01</div>
+        <div class="process-step-icon">🧹</div>
+        <h3>Full Interior Clean</h3>
+        <p>We start from the inside out. Every surface, crevice, and compartment is vacuumed, wiped down, and treated — leaving the cabin fresh, hygienic, and looking factory-new.</p>
+        <div class="process-step-detail">
+          <span>Full vacuum of seats, floors &amp; boot</span>
+          <span>Dashboard &amp; console wipe-down</span>
+          <span>Interior window glass clean</span>
+          <span>Door jams &amp; pockets detailed</span>
+          <span>Interior deodorise &amp; refresh</span>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">02</div>
+        <div class="process-step-icon">✨</div>
+        <h3>Exterior Wash &amp; Wax</h3>
+        <p>A thorough hand wash followed by a professional-grade wax application. Your fleet leaves gleaming — protected against the elements and turning heads for all the right reasons.</p>
+        <div class="process-step-detail">
+          <span>Full exterior hand wash &amp; rinse</span>
+          <span>Panel wipe &amp; dry</span>
+          <span>Professional wax application</span>
+          <span>Exterior window glass clean</span>
+          <span>Door handles &amp; trim detail</span>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">03</div>
+        <div class="process-step-icon">⚫</div>
+        <h3>Tyre Dressing</h3>
+        <p>The finishing touch that separates a clean car from a truly detailed one. We apply a premium tyre dressing to restore deep colour and protect against cracking and fading.</p>
+        <div class="process-step-detail">
+          <span>Tyre &amp; sidewall clean</span>
+          <span>Premium tyre dressing applied</span>
+          <span>Rim &amp; wheel arch clean</span>
+          <span>Restores deep black finish</span>
+          <span>UV protection against fading</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-media reveal" style="margin-top:2px;">
+      <div class="img-placeholder" style="height:280px;">
+        <div class="iph-icon">🎬</div>
+        <div class="iph-label">Video — Interior Clean in Action</div>
+        <div class="iph-sub">Short clip recommended</div>
+        <div class="iph-wm">vantagedetailing.co.nz</div>
+      </div>
+      <div class="img-placeholder" style="height:280px;">
+        <div class="iph-icon">🎬</div>
+        <div class="iph-label">Video — Exterior Wax &amp; Tyre Dressing</div>
+        <div class="iph-sub">Short clip recommended</div>
+        <div class="iph-wm">vantagedetailing.co.nz</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE & AFTER -->
+<section id="beforeafter">
+  <div class="section-inner">
+    <div class="ba-intro">
+      <div class="reveal">
+        <div class="section-label">Results</div>
+        <h2 class="section-title">Before &amp;<br><em>After</em></h2>
+      </div>
+      <div class="reveal rd1">
+        <p class="section-sub">The difference speaks for itself. Real results from real fleet vehicles serviced by Vantage Detailing across Auckland.</p>
+      </div>
+    </div>
+    <div class="ba-grid reveal">
+      <div class="ba-card">
+        <div class="ba-card-images">
+          <div class="img-placeholder" style="height:170px;"><div class="iph-icon">📷</div><div class="iph-label">Before</div><div class="iph-wm">Vantage</div></div>
+          <div class="img-placeholder" style="height:170px;"><div class="iph-icon">📷</div><div class="iph-label">After</div><div class="iph-wm">Vantage</div></div>
+        </div>
+        <div class="ba-label-row"><div class="ba-label">Before</div><div class="ba-label after">After</div></div>
+        <div class="ba-card-title">Interior Detail</div>
+      </div>
+      <div class="ba-card">
+        <div class="ba-card-images">
+          <div class="img-placeholder" style="height:170px;"><div class="iph-icon">📷</div><div class="iph-label">Before</div><div class="iph-wm">Vantage</div></div>
+          <div class="img-placeholder" style="height:170px;"><div class="iph-icon">📷</div><div class="iph-label">After</div><div class="iph-wm">Vantage</div></div>
+        </div>
+        <div class="ba-label-row"><div class="ba-label">Before</div><div class="ba-label after">After</div></div>
+        <div class="ba-card-title">Exterior Wash &amp; Wax</div>
+      </div>
+      <div class="ba-card">
+        <div class="ba-card-images">
+          <div class="img-placeholder" style="height:170px;"><div class="iph-icon">📷</div><div class="iph-label">Before</div><div class="iph-wm">Vantage</div></div>
+          <div class="img-placeholder" style="height:170px;"><div class="iph-icon">📷</div><div class="iph-label">After</div><div class="iph-wm">Vantage</div></div>
+        </div>
+        <div class="ba-label-row"><div class="ba-label">Before</div><div class="ba-label after">After</div></div>
+        <div class="ba-card-title">Tyre Dressing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="howitworks">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">How It Works</div>
+      <h2 class="section-title" style="text-align:center;">Simple. Reliable. Consistent.</h2>
+      <p class="section-sub" style="margin:0 auto 1rem;text-align:center;">Getting started with Vantage is straightforward — no complex setup, no disruption to your day.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Request a Quote</h3>
+        <p>Tell us about your fleet — vehicle types, size, and preferred schedule. We'll come back with a tailored plan that suits your business.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>We Assess Your Fleet</h3>
+        <p>Our team visits your site, reviews your vehicles, and confirms water and power access before setting up your ongoing service schedule.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>We Maintain Your Fleet</h3>
+        <p>Sit back while we arrive on schedule and on-site — delivering immaculate results on every vehicle without any disruption to your team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Industries We Serve</div>
+      <h2 class="section-title">Built for Businesses<br>That Demand More</h2>
+      <p class="section-sub">Every vehicle in your fleet is a moving representation of your brand. We work with industries where presentation isn't optional — it's essential.</p>
+    </div>
+    <div class="industries-grid reveal">
+      <div class="industry-card">
+        <div class="industry-icon">🔧</div>
+        <h3>Trades &amp; Construction</h3>
+        <p>Keep utes, vans, and work vehicles presenting the professionalism your clients expect on every job site.</p>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">🏢</div>
+        <h3>Corporate Fleets</h3>
+        <p>Maintain a consistent, polished appearance across your executive and company vehicle fleet.</p>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">🚗</div>
+        <h3>Car Dealerships</h3>
+        <p>Showroom-ready results on every vehicle. We treat your stock like the premium assets they are.</p>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">🔑</div>
+        <h3>Rental &amp; Hire Companies</h3>
+        <p>Regular maintenance schedules to keep your rental fleet clean, fresh, and customer-ready at all times.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET CARE PLANS -->
+<section id="plans">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Fleet Care Plans</div>
+      <h2 class="section-title">Servicing That Works<br>Around Your Business</h2>
+      <p class="section-sub">Convenience is built into every plan. Choose a schedule that fits your operations — we handle the rest.</p>
+    </div>
+    <div class="plans-grid reveal">
+      <div class="plan-card">
+        <div class="plan-freq">Weekly</div>
+        <h3>Weekly Washes</h3>
+        <p>Consistently spotless with regular weekly maintenance — ideal for high-visibility businesses and sales vehicles.</p>
+      </div>
+      <div class="plan-card">
+        <div class="plan-freq">Fortnightly</div>
+        <h3>Fortnightly Maintenance</h3>
+        <p>A balanced schedule for fleets that need regular upkeep without daily or weekly service requirements.</p>
+      </div>
+      <div class="plan-card">
+        <div class="plan-freq">Monthly</div>
+        <h3>Monthly Deep Cleans</h3>
+        <p>Comprehensive detailing on a monthly cycle — recommended for vans, trucks, and heavy commercial vehicles.</p>
+      </div>
+      <div class="plan-card">
+        <div class="plan-freq">Flexible</div>
+        <h3>After-Hours Servicing</h3>
+        <p>We work around your schedule. Evening and weekend availability for minimal business disruption.</p>
+      </div>
+      <div class="plan-card">
+        <div class="plan-freq">Always</div>
+        <h3>On-Site Detailing</h3>
+        <p>We come to your premises, yard, or depot. No drop-offs, no logistics — seamless service where your vehicles are.</p>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:2rem;font-size:0.82rem;color:var(--silver-dim);">
+      Standard flat fee of $150 per vehicle (minimum 3 vehicles). New clients: one-off first-visit fee of $30.
+    </p>
+  </div>
+</section>
+
+<!-- PRIVATE CLIENTS -->
+<section id="private">
+  <div class="section-inner">
+    <div class="private-layout">
+      <div class="reveal">
+        <div class="section-label">Private Clients</div>
+        <h2 class="section-title">Exclusive Quotes for<br>Personal Vehicles</h2>
+        <p class="section-sub">While our core focus is commercial fleet care, we extend an exclusive private detailing service to individual clients who hold their personal vehicle to the same high standard.</p>
+        <div class="private-features">
+          <div class="private-feat">
+            <div class="feat-icon">✦</div>
+            <div>
+              <h4>Tailored Private Quote</h4>
+              <p>Every private vehicle is quoted individually based on condition, size, and service requirements.</p>
+            </div>
+          </div>
+          <div class="private-feat">
+            <div class="feat-icon">✦</div>
+            <div>
+              <h4>The Full Three-Stage Treatment</h4>
+              <p>Interior clean, exterior wash and wax, and tyre dressing — the same premium process, delivered to your door.</p>
+            </div>
+          </div>
+          <div class="private-feat">
+            <div class="feat-icon">✦</div>
+            <div>
+              <h4>Discreet &amp; Convenient</h4>
+              <p>On-site at your home or workplace. Water and power access at your premises required.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal rd1">
+        <div class="private-cta-box">
+          <h3>Request a Private Quote</h3>
+          <p>For private vehicle detailing enquiries, reach out directly. We'll assess your vehicle and provide a personalised quote — no obligation, no generic pricing.</p>
+          <a href="#contact" class="btn-primary">Enquire Now</a>
+          <p style="margin-top:1.5rem;font-size:0.8rem;color:var(--silver-dim);font-style:italic;">Serving select private clients across Auckland.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+
+    <!-- Story & Stats -->
+    <div class="about-intro">
+      <div class="reveal">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">Built by Car<br>Enthusiasts.</h2>
+        <div class="about-story">
+          <p>Vantage Detailing was founded by <strong>two lifelong car enthusiasts</strong> who grew up with a shared passion for vehicles and presentation.</p>
+          <div class="about-pull">"A vehicle is more than transport — it is representation."</div>
+          <p>While working on a job site, we watched a meticulously detailed sales vehicle arrive. It wasn't just the car that stood out — it was the reaction. Heads turned. Conversations paused. Attention shifted instantly to the vehicle, the company branding, and the presence of the person driving it.</p>
+          <p>That moment made everything clear. That was the moment Vantage Detailing was created.</p>
+          <p>With <strong>over 2.5 years of hands-on experience</strong> and the past year spent delivering professional services to corporate fleet partners across Auckland, we've refined our craft through real results — not theory.</p>
+        </div>
+      </div>
+      <div class="reveal rd1">
+        <div class="section-label" style="margin-bottom:2rem;">By the Numbers</div>
+        <div class="about-stats">
+          <div class="stat-box"><div class="stat-number">2.5+</div><div class="stat-desc">Years of hands-on detailing experience</div></div>
+          <div class="stat-box"><div class="stat-number">1yr</div><div class="stat-desc">Commercial fleet servicing in Auckland</div></div>
+          <div class="stat-box"><div class="stat-number">100%</div><div class="stat-desc">Mobile on-site service delivery</div></div>
+          <div class="stat-box"><div class="stat-number">3+</div><div class="stat-desc">Active corporate fleet partnerships</div></div>
+        </div>
+        <div class="section-label" style="margin-bottom:1.25rem;">What Sets Us Apart</div>
+        <div class="about-values">
+          <div class="value-line">Mobile on-site fleet servicing for business convenience</div>
+          <div class="value-line">Premium-grade products and precision processes</div>
+          <div class="value-line">Consistent, reliable service schedules</div>
+          <div class="value-line">Fleets treated as unified brand assets</div>
+          <div class="value-line">Auckland-based and business-focused</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Co-Founders -->
+    <div class="founders-divider reveal">Meet the Founders</div>
+    <div class="founders-grid reveal">
+
+      <div class="founder-card">
+        <div class="founder-photo">
+          <div class="img-placeholder" style="height:300px;border-radius:0;border:none;border-bottom:1px dashed rgba(192,192,192,0.15);">
+            <div class="iph-icon">📷</div>
+            <div class="iph-label">Photo — Mackenzie Reid</div>
+            <div class="iph-sub">Portrait or on-site action shot</div>
+            <div class="iph-wm">Vantage Detailing</div>
+          </div>
+        </div>
+        <div class="founder-body">
+          <div class="founder-name">Mackenzie Reid</div>
+          <div class="founder-role">Director &amp; Co-Founder</div>
+          <p>Cars have always been part of my life. I come from a family where vehicles and racing are basically in our DNA, so caring about them came naturally to me. I grew up go-karting at the Mt Wellington track and eventually got into racing with my own team in the Lemons series. It was a lot of fun, a lot of learning — and honestly, it just confirmed what I already knew. I love this stuff.</p>
+          <p>I still work on my own projects on the side, so when I'm not running the business, you'll usually find me elbow-deep in something.</p>
+          <p>Starting Vantage Detailing felt like the obvious next step. Commercial fleets are how a lot of businesses show up in the world, and I genuinely believe a clean, well-presented fleet says something real about a company. We started this business because we actually care about the work — not just as a service, but as something worth doing properly.</p>
+          <p>That's really what Vantage is about: people who give a damn about vehicles, helping businesses that give a damn about how they're seen.</p>
+        </div>
+      </div>
+
+      <div class="founder-card">
+        <div class="founder-photo">
+          <div class="img-placeholder" style="height:300px;border-radius:0;border:none;border-bottom:1px dashed rgba(192,192,192,0.15);">
+            <div class="iph-icon">📷</div>
+            <div class="iph-label">Photo — Tomoki Huskinson</div>
+            <div class="iph-sub">Portrait or on-site action shot</div>
+            <div class="iph-wm">Vantage Detailing</div>
+          </div>
+        </div>
+        <div class="founder-body">
+          <div class="founder-name">Tomoki Huskinson</div>
+          <div class="founder-role">Managing Director &amp; Co-Founder</div>
+          <p>Some of my earliest memories are of cleaning cars for pocket money as a child — and I remember it feeling like such a chore. One day, after a long road trip, the family car was a mess: dust all over the exterior and half of the coastline's sand inside the car. I dreaded the thought of cleaning it and all the time I could be spending watching TV or playing games. But it was during that moment that I fell in love with the process — and it's a memory that has stayed with me.</p>
+          <p>As I got older, the road trips stopped as life got busy, and my knack for cleaning cars faded along with them. A couple of years later, I picked up an odd job and fell back in love with the process of turning a beloved car from grimy and tired to looking straight off the lot.</p>
+          <p>Starting Vantage with my co-founder felt like the natural next step. Businesses grow, and as they do, they need to accommodate the needs of their team. It starts with one vehicle, which becomes two, and before long there's a fleet of cars with a business logo stamped loud and proud on each one — a proud display of the company that's been built.</p>
+          <p>My co-founder and I share the same belief: how you present your brand matters. That's why we care about the work we do. It's not just a clean or a service — it's a reflection of the values a company upholds.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="faq-layout">
+      <div class="reveal">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Common<br>Questions</h2>
+        <p class="section-sub" style="margin-top:1rem;">Everything you need to know before getting started with Vantage.</p>
+        <div style="margin-top:2.5rem;"><a href="#contact" class="btn-outline">Ask Us Directly</a></div>
+      </div>
+      <div class="faq-list reveal rd1">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Do you come to us?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Yes — always. We come to you for your convenience. Whether that's your depot, yard, office car park, or business premises, we bring everything needed to service your fleet on-site. No drop-offs required.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Do you require water or power on site?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Yes — we require access to a water source and power supply at your location. Most business premises accommodate this without issue. If you're unsure, just mention it when you enquire and we'll confirm everything ahead of your first service.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How often should my fleet be cleaned?<span class="faq-icon">+</span></button>
+          <div class="faq-a">For sales cars, utes, and other smaller vehicles, we recommend a monthly clean. For vans, trucks, and heavier commercial vehicles, we recommend a service every three months. We can help you build a schedule that suits your specific fleet mix.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What is your pricing structure?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Our pricing is a standard flat fee of $150 per vehicle within a fleet, with a minimum of 3 vehicles per service. New clients are charged a one-off first-visit fee of $30. Private vehicle quotes are provided individually upon enquiry.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Do you offer after-hours servicing?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Yes. We understand that business operations can't always pause during the day. We offer after-hours and weekend scheduling so your fleet is serviced with zero disruption to your team.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What areas do you service?<span class="faq-icon">+</span></button>
+          <div class="faq-a">We are proudly based in Auckland and service businesses throughout the Auckland region. If you're unsure whether we cover your area, reach out and we'll confirm availability.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-layout">
+      <div class="reveal">
+        <div class="section-label">Get in Touch</div>
+        <div class="contact-info">
+          <h3>Ready to Elevate<br>Your Fleet?</h3>
+          <p>Whether you're managing three vehicles or thirty, we'd love to discuss how Vantage Detailing can become a seamless part of your business operations.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div><h4>Location</h4><p>Auckland, New Zealand</p></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">🕐</div>
+              <div><h4>Service Hours</h4><p>Monday – Saturday, including after-hours by arrangement</p></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">🚐</div>
+              <div><h4>Service Type</h4><p>Fully mobile — we come to your premises (water &amp; power access required)</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal rd1">
+        <div class="section-label" style="margin-bottom:1.5rem;">Fleet Quote Request</div>
+        <form class="contact-form" id="quoteForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" placeholder="John" required /></div>
+            <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" placeholder="Smith" required /></div>
+          </div>
+          <div class="form-group"><label for="company">Business Name</label><input type="text" id="company" placeholder="Your Company Ltd" required /></div>
+          <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" placeholder="john@yourcompany.co.nz" required /></div>
+          <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" placeholder="021 000 0000" /></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="vehicles">Fleet Size</label>
+              <select id="vehicles">
+                <option value="">Select fleet size</option>
+                <option>3–5 vehicles</option>
+                <option>6–10 vehicles</option>
+                <option>11–20 vehicles</option>
+                <option>20+ vehicles</option>
+                <option>Private vehicle enquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="frequency">Service Frequency</label>
+              <select id="frequency">
+                <option value="">Select frequency</option>
+                <option>Weekly</option>
+                <option>Fortnightly</option>
+                <option>Monthly</option>
+                <option>One-off / Quote Only</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label for="message">Tell Us About Your Fleet</label><textarea id="message" placeholder="Vehicle types, location, any specific requirements..."></textarea></div>
+          <p class="form-note">By submitting this form you agree to be contacted by Vantage Detailing. New clients: first-visit fee of $30 applies. Water and power access required at your premises.</p>
+          <button type="submit" class="btn-primary" style="width:100%;">Submit Enquiry</button>
+          <div class="form-success" id="formSuccess">✦ &nbsp; Thank you for your enquiry. We'll be in touch within 24 hours.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">VANTAGE<span> DETAILING</span></div>
+      <div class="footer-slogan">Because it's more than just a car.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#process">Our Service</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#plans">Fleet Plans</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 Vantage Detailing. Auckland, NZ.</div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Hero grid parallax
+  window.addEventListener('scroll', () => {
+    const gl = document.querySelector('.hero-grid-lines');
+    if (gl) gl.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+  }, { passive: true });
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('quoteForm');
+    form.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+</script>
+</body>
+</html>
