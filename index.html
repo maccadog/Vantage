@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/jpeg" href="vantage_icon"/>
+  <!-- FAVICON: Upload your logo file to your GitHub repo, then replace the line below -->
+  <!-- Example: <link rel="icon" type="image/jpeg" href="vantage-logo.jpeg" /> -->
+  <link rel="icon" type="image/jpeg" href="vantage-logo.jpeg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vantage Detailing — Professional Fleet Care Auckland</title>
   <meta name="description" content="Vantage Detailing provides premium fleet detailing services for Auckland businesses. Mobile on-site servicing, corporate fleet plans, and executive presentation care." />
@@ -1119,16 +1121,16 @@
         <div class="section-label" style="margin-bottom:1.5rem;">Fleet Quote Request</div>
         <form class="contact-form" id="quoteForm" onsubmit="handleSubmit(event)">
           <div class="form-row">
-            <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" placeholder="John" required /></div>
-            <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" placeholder="Smith" required /></div>
+            <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" name="fname" placeholder="John" required /></div>
+            <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" name="lname" placeholder="Smith" required /></div>
           </div>
-          <div class="form-group"><label for="company">Business Name</label><input type="text" id="company" placeholder="Your Company Ltd" required /></div>
-          <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" placeholder="john@yourcompany.co.nz" required /></div>
-          <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" placeholder="021 000 0000" /></div>
+          <div class="form-group"><label for="company">Business Name</label><input type="text" id="company" name="company" placeholder="Your Company Ltd" required /></div>
+          <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="john@yourcompany.co.nz" required /></div>
+          <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="021 000 0000" /></div>
           <div class="form-row">
             <div class="form-group">
               <label for="vehicles">Fleet Size</label>
-              <select id="vehicles">
+              <select id="vehicles" name="fleet-size">
                 <option value="">Select fleet size</option>
                 <option>3–5 vehicles</option>
                 <option>6–10 vehicles</option>
@@ -1139,7 +1141,7 @@
             </div>
             <div class="form-group">
               <label for="frequency">Service Frequency</label>
-              <select id="frequency">
+              <select id="frequency" name="service-frequency">
                 <option value="">Select frequency</option>
                 <option>Weekly</option>
                 <option>Fortnightly</option>
@@ -1148,7 +1150,7 @@
               </select>
             </div>
           </div>
-          <div class="form-group"><label for="message">Tell Us About Your Fleet</label><textarea id="message" placeholder="Vehicle types, location, any specific requirements..."></textarea></div>
+          <div class="form-group"><label for="message">Tell Us About Your Fleet</label><textarea id="message" name="message" placeholder="Vehicle types, location, any specific requirements..."></textarea></div>
           <p class="form-note">By submitting this form you agree to be contacted by Vantage Detailing. New clients: first-visit fee of $30 applies. Water and power access required at your premises.</p>
           <button type="submit" class="btn-primary" style="width:100%;">Submit Enquiry</button>
           <div class="form-success" id="formSuccess">✦ &nbsp; Thank you for your enquiry. We'll be in touch within 24 hours.</div>
@@ -1210,38 +1212,51 @@
   // Form submit — Formspree
   async function handleSubmit(e) {
     e.preventDefault();
-    const form = document.getElementById('quoteForm');
-    const btn  = form.querySelector('button[type=submit]');
-    const success = document.getElementById('formSuccess');
-    const error   = document.getElementById('formError');
+    var form = document.getElementById('quoteForm');
+    var btn  = form.querySelector('button[type=submit]');
+    var success = document.getElementById('formSuccess');
+    var errorDiv = document.getElementById('formError');
 
     btn.disabled = true;
     btn.textContent = 'Sending…';
-    error.style.display = 'none';
+    errorDiv.style.display = 'none';
+    success.style.display = 'none';
 
-    const data = new FormData(form);
+    var data = new FormData(form);
 
-    try {
-      // ── IMPORTANT: Replace YOUR_FORM_ID below with your actual Formspree ID ──
-      const res = await fetch('https://formspree.io/f/meedovwp', {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        form.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
+    // ══════════════════════════════════════════════════════════════════
+    // STEP REQUIRED: Replace xyzabcde below with your Formspree Form ID
+    // Get it from: formspree.io → Dashboard → Your Form → Integration tab
+    // Example endpoint: https://formspree.io/f/xyzabcde
+    // ══════════════════════════════════════════════════════════════════
+    fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+      if (response.ok) {
+        form.querySelectorAll('input, select, textarea, button').forEach(function(el) {
+          el.disabled = true;
+        });
         success.style.display = 'block';
       } else {
-        const json = await res.json();
-        throw new Error(json.errors ? json.errors.map(e => e.message).join(', ') : 'Submission failed.');
+        response.json().then(function(data) {
+          btn.disabled = false;
+          btn.textContent = 'Submit Enquiry';
+          errorDiv.style.display = 'block';
+          if (data.errors) {
+            errorDiv.textContent = '⚠ ' + data.errors.map(function(e) { return e.message; }).join(', ');
+          } else {
+            errorDiv.textContent = '⚠ Something went wrong. Please try again or email us directly.';
+          }
+        });
       }
-    } catch (err) {
+    }).catch(function(err) {
       btn.disabled = false;
       btn.textContent = 'Submit Enquiry';
-      error.style.display = 'block';
-      error.textContent = '⚠ ' + (err.message || 'Something went wrong. Please try again.');
-    }
+      errorDiv.style.display = 'block';
+      errorDiv.textContent = '⚠ Network error. Please check your connection and try again.';
+    });
   }
 </script>
 </body>
