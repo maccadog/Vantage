@@ -596,13 +596,16 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       section { padding: 4.5rem 5vw; }
-      .hero-badge, .hero-badge-text { display: none; }
+      .hero-badge, .hero-badge-text, .hero-scroll { display: none; }
       .steps { grid-template-columns: 1fr; }
       .ba-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .footer-inner { flex-direction: column; text-align: center; }
       .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-height: 700px) {
+      .hero-scroll { display: none; }
     }
   </style>
 </head>
