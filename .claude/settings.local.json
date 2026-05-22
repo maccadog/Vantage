@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"C:\\\\Users\\\\Mackenzie Reid\\\\Documents\\\\Vantage\\\\.claude\\\\worktrees\\\\adoring-bouman-1dabb1\\\\.claude\")",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell(Get-Command python, python3, py, node, npx, http-server 2>$null)",
+      "Bash(python3 -m http.server 3000)",
+      "Bash(cd \"/c/Users/Mackenzie Reid/Documents/Vantage/.claude/worktrees/adoring-bouman-1dabb1\" && grep -n \"interior_\\\\|rim_\\\\|exterior_\" index.html | grep -E \"src=|video\")"
+    ]
+  }
+}
