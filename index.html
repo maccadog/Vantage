@@ -467,23 +467,26 @@
     /* ── FAQ ── */
     #faq { background: var(--black); }    
     /* ── RESPONSIVE BEFORE/AFTER ── */
-    .ba-card-images { height: 250px; }
+    .ba-card-images { height: 200px; }
     .ba-card-images > img,
     .ba-card-images > video {
-      height: 250px !important;
+      height: 200px !important;
+      image-rendering: crisp-edges;
+      -webkit-font-smoothing: antialiased;
+      -webkit-backface-visibility: hidden;
     }
     @media (min-width: 768px) {
-      .ba-card-images { height: 400px; }
+      .ba-card-images { height: 350px; }
       .ba-card-images > img,
       .ba-card-images > video {
-        height: 400px !important;
+        height: 350px !important;
       }
     }
     @media (min-width: 1024px) {
-      .ba-card-images { height: 550px; }
+      .ba-card-images { height: 450px; }
       .ba-card-images > img,
       .ba-card-images > video {
-        height: 550px !important;
+        height: 450px !important;
       }
     }
     .faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start; }
