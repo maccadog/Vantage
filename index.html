@@ -471,9 +471,12 @@
     .ba-card-images > img,
     .ba-card-images > video {
       height: 200px !important;
-      image-rendering: crisp-edges;
+      image-rendering: auto;
       -webkit-font-smoothing: antialiased;
       -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
     }
     @media (min-width: 768px) {
       .ba-card-images { height: 350px; }
